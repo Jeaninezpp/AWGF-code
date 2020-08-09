@@ -29,7 +29,7 @@ for iter = 1:max_iter
     
     % ---------- Update Vi ----------%
     V=updateV(X,U,V,Z,lmd1,num_views);
-    for v = 1:num_views
+    for iv = 1:num_views
         vtemp = V{iv};
         vtemp = gpuArray(vtemp);
         invtemp = inv(vtemp*vtemp');
