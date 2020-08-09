@@ -29,7 +29,13 @@ for iter = 1:max_iter
     
     % ---------- Update Vi ----------%
     V=updateV(X,U,V,Z,lmd1,num_views);
-    
+    for v = 1:num_views
+        vtemp = V{iv};
+        vtemp = gpuArray(vtemp);
+        invtemp = inv(vtemp*vtemp');
+        invtemp =gather(invtemp);
+        invVV{iv} = invtemp;
+    end
     % ---------- Update Zi ----------%
 %>> QP solution
 %     for iv =1:num_views
@@ -83,6 +89,7 @@ for iter = 1:max_iter
         Zi = Zi * colsum_diag^-1;
         % symmetry
         %Z{iv} = (Zi+Zi')/2;
+        Z{iv} = Zi;
     end
 
     % ---------- Update alpha_i ----------%

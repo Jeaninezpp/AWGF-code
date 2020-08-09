@@ -4,7 +4,6 @@ warning off;
 
 % path = 'E:\codes -access -hu\results';
 % addpath(genpath(path));
-dataname = 'WikipediaArticles';
 
 % file = load([dataname,'.mat']);
 % accval10 =file.accval10;
@@ -17,10 +16,13 @@ dataname = 'WikipediaArticles';
 % title('Flower17','fontsize',20);
 % set(gca,'xticklabel',x,'yticklabel',y);
 
+load('allresult');
+% dataname = 'onecomplete_100Leaves_missing10';
+dataname = 'onecomplete_buaaRnSp_missing10';
+% dataname = 'onecomplete_caltech7_missing10';
+% dataname = 'onecomplete_mfeatRnSp_missing10';
 
-file = load([dataname,'.mat']);
-acc =file.Nmi;
-% showresults = accval10(21:31,21:31)*100+10;
+A= onecomplete_buaaRnSp_missing10;
 %% 2-para
 for i =1:6
     for j= 1:6
@@ -41,7 +43,7 @@ x = [1000, 100, 10, 0.1, 0.01, 0.001];
 y = [0.001, 0.01, 0.1, 10, 100, 1000];
 bar3(showresults);
 xlabel('$\lambda2$','interpreter','latex','fontsize',15),ylabel('$\lambda3$','interpreter','latex','fontsize',15), zlabel('NMI(%)','fontsize',15);
-title('One-complete_ 100leaves_ miss10%','fontsize',15);
+title('One-complete_ BUAA_ miss10%','fontsize',15);
 set(gca,'xticklabel',x,'yticklabel',y);
 %% 1-para
 for k=1:6
@@ -53,7 +55,7 @@ x = [1000, 100, 10, 0.1, 0.01, 0.001];
 bar(showresults);
 xlabel('$\lambda2$','interpreter','latex','fontsize',12),ylabel('ACC(%)','fontsize',12);
 title('One-complete_ 100leaves_ miss50%','fontsize',12);
-set(gca,'xticklabel',x,);
+set(gca,'xticklabel',x);
 
 showresults = nmi(1:6,1:6)*100;
 x = [1000, 100, 10, 0.1, 0.01, 0.001];

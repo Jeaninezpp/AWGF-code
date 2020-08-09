@@ -21,7 +21,7 @@ for datai = 1:1
     num_views    = length(data);
     num_sample  = length(truth);
 
-    for per_in = 1:1  % per incomplete ratio 
+    for per_in = 3:3  % per incomplete ratio 
         in_ratio = per_in*10;
         percent = per{per_in};%percent = cell(1,10);
         
